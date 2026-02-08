@@ -25,31 +25,21 @@ export default function useScrollTimeline() {
       },
     })
 
-    /* =========================
-       🔁 CONTINUOUS ROTATION
+   /* =========================
+      🔁 CONTINUOUS ROTATION
     ========================= */
 
-    // Brain rotation
-    tl.to(
-      coreGroup.rotation,
-      {
-        y: Math.PI * 3,
-        ease: "none",
-      },
-      0
-    )
+    tl.to(coreGroup.rotation, {
+      y: `+=${Math.PI * 4}`,
+      ease: "none",
+    }, 0)
 
-    // Neural field rotation (only if it exists)
     if (neuralField) {
-      tl.to(
-        neuralField.rotation,
-        {
-          y: Math.PI * 2,
-          x: Math.PI * 0.15,
-          ease: "none",
-        },
-        0
-      )
+      tl.to(neuralField.rotation, {
+        y: `+=${Math.PI * 2}`,
+        x: `+=${Math.PI * 0.15}`,
+        ease: "none",
+      }, 0)
     }
 
     /* =========================
