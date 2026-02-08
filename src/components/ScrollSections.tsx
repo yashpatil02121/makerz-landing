@@ -1,6 +1,9 @@
 import AppBar from "./AppBar"
+import { useState } from "react"
+import ComingSoonDialog from "./ComingSoonDialog"
 
 export default function ScrollSections() {
+  const [dialogOpen, setDialogOpen] = useState(false)
   return (
     <>
     <AppBar />
@@ -47,7 +50,10 @@ export default function ScrollSections() {
           </p>
 
           <div className="pt-6 flex gap-6">
-            <button className="group px-8 py-4 bg-green-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-green-600/30 transition-all duration-300">
+            <button
+              onClick={() => setDialogOpen(true)}
+              className="group px-8 py-4 bg-green-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-green-600/30 transition-all duration-300"
+            >
               Start Learning
               <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">
                 →
@@ -120,7 +126,7 @@ export default function ScrollSections() {
               Get onboarded into a structured learning environment with your team.
             </Step>
             <Step n="02" title="Learn Through Bootcamps">
-              Role-specific training for Product Owners, Designers, and Engineers.
+              Role-specific training for Project Managers, Product Owners, Designers, and Engineers.
             </Step>
             <Step n="03" title="Create Guided Artifacts">
               Apply learning using section-based templates.
@@ -185,7 +191,10 @@ export default function ScrollSections() {
             Designed for every product role
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <Role title="Project Managers">
+              Planning, timelines, execution, delivery.
+            </Role>
             <Role title="Product Owners">
               Requirements, user stories, roadmaps, PRDs.
             </Role>
@@ -221,12 +230,19 @@ export default function ScrollSections() {
             Join teams who transformed how they learn and deliver.
           </p>
 
-          <button className="px-12 py-5 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl shadow-xl hover:scale-[1.03] transition-transform">
+          <button
+            onClick={() => setDialogOpen(true)}
+            className="px-12 py-5 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl shadow-xl hover:scale-[1.03] transition-transform"
+          >
             Join the Network
           </button>
         </div>
       </section>
     </div>
+    <ComingSoonDialog
+  open={dialogOpen}
+  onClose={() => setDialogOpen(false)}
+/>
     </>
   )
 }
